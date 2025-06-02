@@ -1,0 +1,261 @@
+/* === 全体設定 === */
+body {
+  background-color: #0f0f0f;
+  color: white;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  /* ページトップの余白をなくす */
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* === レイアウトコンテナ === */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* カード間の隙間を少し狭く */
+  width: 100%;
+  max-width: 900px;
+  /* 幅を少し狭め */
+}
+
+/* === カードスタイル === */
+.card {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 15px;
+  padding: 20px;
+  /* 30pxから20pxに縮小 */
+  box-shadow: 0 0 15px rgba(230, 57, 70, 0.7);
+  min-height: 180px;
+  /* 220pxから180pxに縮小 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(230, 57, 70, 1);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+.card * {
+  position: relative;
+  z-index: 1;
+  text-shadow: 2px 2px 6px #000;
+}
+
+.card h2 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #e63946;
+  padding-bottom: 5px;
+}
+
+.card p,
+.card ul {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.card ul {
+  list-style: disc inside;
+  margin-top: 10px;
+  padding-left: 0;
+}
+
+.card ul li {
+  margin-bottom: 6px;
+}
+
+/* === 各カード背景画像 === */
+.rules {
+  background-image: url('https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/28db4af74acd1d78ddba82ed127a99731261b9c8-5120x1772.png');
+  background-position: center top;
+}
+
+.agents {
+  background-image: url('https://valorant-note.com/wp-content/uploads/2023/04/fe6d18134f8d5cd4c2b1bd68de9ecc34-1.png');
+  background-position: center top;
+}
+
+.weapons {
+  background-image: url('https://appmedia.jp/wp-content/themes/appmedia/lib/valorant/images/weapon/img/200012.webp');
+  background-position: center center;
+}
+
+/* === メインコンテンツ === */
+main {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  color: white;
+}
+
+main section {
+  margin-bottom: 40px;
+}
+
+main h2 {
+  font-size: 2em;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #e63946;
+  padding-bottom: 5px;
+}
+
+main p,
+main ul {
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+main ul {
+  list-style: disc inside;
+  padding-left: 0;
+}
+
+main ul li {
+  margin-bottom: 10px;
+}
+
+/* === ヒーローセクション === */
+.hero {
+  position: relative;
+  width: 100%;
+  padding: 30px 0;
+  /* 上下のpaddingを減らして詰める */
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  overflow: visible;
+}
+
+.gif-container {
+  position: relative;
+  width: 600px;
+  height: 450px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.bg-gif {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  z-index: 0;
+  display: block;
+  border-radius: 10px;
+}
+
+.gif-top {
+  text-align: center;
+  margin-bottom: 30px;
+  display: block;
+  width: 100%;
+}
+
+.top-gif {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 1px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 8px #000;
+  pointer-events: none;
+}
+
+.hero-text h1,
+.hero-text p {
+  margin: 0;
+}
+
+/* === 特徴リスト === */
+.features ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.features li {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+/* === プレイボタン === */
+.play-now button {
+  padding: 10px 20px;
+  background-color: #e63946;
+  color: white;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.play-now button:hover {
+  background-color: #d62828;
+}
+
+/* === フッター === */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #1a1a1a;
+  font-size: 0.9em;
+}
+
+/* === レスポンシブ対応 === */
+@media (max-width: 768px) {
+  .card {
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .gif-container {
+    width: 90%;
+    height: auto;
+  }
+
+  .hero-text h1 {
+    font-size: 1.5em;
+  }
+
+  .hero-text p {
+    font-size: 1em;
+  }
+}
