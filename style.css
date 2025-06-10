@@ -93,7 +93,12 @@ body {
   background-position: center top;
 }
 
-.agents {
+.nagare {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7Z7kF0XqYPOAz2fEZreg7ehRhFpbMJatt2w&s');
+  background-position: center top;
+}
+
+.koneta {
   background-image: url('https://valorant-note.com/wp-content/uploads/2023/04/fe6d18134f8d5cd4c2b1bd68de9ecc34-1.png');
   background-position: center top;
 }
@@ -167,7 +172,7 @@ main ul li {
   object-position: top center;
   z-index: 0;
   display: block;
-  border-radius: 10px;
+  border-radius: 30px;
 }
 
 .gif-top {

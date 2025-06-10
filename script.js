@@ -1,3 +1,3 @@
 function goToValorant() {
-  window.open("https://playvalorant.com/", "_blank");
+  window.open("https://playvalorant.ccom/", "_blank");
 }
