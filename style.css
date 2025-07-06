@@ -1,66 +1,146 @@
-/* === 全体設定 === */
+/* === Google Fonts === */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap');
+
+/* === グローバル設定 === */
 body {
-  background-color: #0f0f0f;
-  color: white;
-  font-family: sans-serif;
   margin: 0;
   padding: 0;
-  /* ページトップの余白をなくす */
+  min-height: 100vh;
+  background-color: #0f0f0f;
+  color: white;
+  font-family: 'Rajdhani', sans-serif;
   display: flex;
   justify-content: center;
-  min-height: 100vh;
+  align-items: center;
 }
 
-/* === レイアウトコンテナ === */
+/* === コンテナレイアウト === */
 .container {
   display: flex;
   flex-direction: column;
+  align-items: center; /* ← カード中央寄せ */
   gap: 20px;
-  /* カード間の隙間を少し狭く */
   width: 100%;
-  max-width: 900px;
-  /* 幅を少し狭め */
+  max-width: 600px;
+  margin: 0 auto; /* ← 念のため中央揃え補強 */
+}
+/* === ヒーローセクション === */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 20px 80px;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(to bottom right, #0f0f0f, #1a1a1a),
+  url('https://i.giphy.com/i2ob9KfFb2cFWXQ241.webp');
+  background-size: cover;
+  background-position: center;
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.6);
 }
 
-/* === カードスタイル === */
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  font-weight: 900;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #ff4655;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.hero p {
+  font-size: 1.3rem;
+  max-width: 600px;
+  color: #dddddd;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+.gif-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto;
+  max-width: 100%;
+}
+
+.top-gif {
+  width: min(90vw, 500px); /* 幅は最大500px、画面幅の90%以下 */
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.top-gif:hover {
+  transform: scale(1.05);
+}
+
+/* === 背景GIF固定（下層） === */
+.gif-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.gif-index {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.gif-index {
+  background-image: url('kakoii.gif');
+}
+
+.gif-background {
+  background-image: url('arkaine.gif');
+}
+
 .card {
   position: relative;
+  width: 100%;             /* ← 必要に応じて600pxとかに固定してもいい */
+  max-width: 600px;        /* ← コンテナに合わせて中央揃え */
+  border-radius: 15px;
+  padding: 20px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 15px;
-  padding: 20px;
-  /* 30pxから20pxに縮小 */
-  box-shadow: 0 0 15px rgba(230, 57, 70, 0.7);
-  min-height: 180px;
-  /* 220pxから180pxに縮小 */
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
   transform: scale(1.03);
-  box-shadow: 0 0 25px rgba(230, 57, 70, 1);
+  box-shadow: 0 0 25px rgb(250, 3, 3);
 }
 
-.card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 0;
+
+.card {
+  min-height: 300px; /* ← 元の180pxから300pxくらいに変更 */
 }
 
 .card * {
   position: relative;
   z-index: 1;
-  text-shadow: 2px 2px 6px #000;
+  text-shadow: 2px 2px 6px #f7faff;
 }
 
 .card h2 {
@@ -74,38 +154,30 @@ body {
 .card ul {
   font-size: 1.1em;
   line-height: 1.6;
-  margin: 0;
 }
 
 .card ul {
   list-style: disc inside;
-  margin-top: 10px;
   padding-left: 0;
+  margin-top: 10px;
 }
 
 .card ul li {
   margin-bottom: 6px;
 }
 
-/* === 各カード背景画像 === */
+/* === カードごとの背景画像 === */
 .rules {
   background-image: url('https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/28db4af74acd1d78ddba82ed127a99731261b9c8-5120x1772.png');
-  background-position: center top;
 }
-
 .nagare {
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7Z7kF0XqYPOAz2fEZreg7ehRhFpbMJatt2w&s');
-  background-position: center top;
+  background-image: url('https://pbs.twimg.com/media/E3CDQWaVoAMEw3f.png:large');
 }
-
 .koneta {
   background-image: url('https://valorant-note.com/wp-content/uploads/2023/04/fe6d18134f8d5cd4c2b1bd68de9ecc34-1.png');
-  background-position: center top;
 }
-
 .weapons {
-  background-image: url('https://appmedia.jp/wp-content/themes/appmedia/lib/valorant/images/weapon/img/200012.webp');
-  background-position: center center;
+  background-image: url('https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/4027edef7e1e69dab856ebda836df60c77a5328d-1920x1080.jpg?auto=format&fit=crop&q=80&h=537&w=956&crop=center');
 }
 
 /* === メインコンテンツ === */
@@ -142,18 +214,7 @@ main ul li {
   margin-bottom: 10px;
 }
 
-/* === ヒーローセクション === */
-.hero {
-  position: relative;
-  width: 100%;
-  padding: 30px 0;
-  /* 上下のpaddingを減らして詰める */
-  background-color: #000;
-  display: flex;
-  justify-content: center;
-  overflow: visible;
-}
-
+/* === .heroに使うGIFを囲うコンテナ === */
 .gif-container {
   position: relative;
   width: 600px;
@@ -164,8 +225,7 @@ main ul li {
 
 .bg-gif {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -175,23 +235,7 @@ main ul li {
   border-radius: 30px;
 }
 
-.gif-top {
-  text-align: center;
-  margin-bottom: 30px;
-  display: block;
-  width: 100%;
-}
-
-.top-gif {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  border-radius: 1px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
+/* === ヒーローテキスト中央寄せ === */
 .hero-text {
   position: absolute;
   top: 50%;
@@ -236,31 +280,63 @@ main ul li {
   background-color: #d62828;
 }
 
-/* === フッター === */
+/* === フッター（追加する場合） === */
 footer {
   text-align: center;
   padding: 20px;
-  background-color: #1a1a1a;
   font-size: 0.9em;
+  color: #999;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0f1923;
+  color: white;
+  font-family: 'Rajdhani', sans-serif;
 }
 
-/* === レスポンシブ対応 === */
-@media (max-width: 768px) {
-  .card {
-    min-height: auto;
-    padding: 20px;
-  }
-
-  .gif-container {
-    width: 90%;
-    height: auto;
-  }
-
-  .hero-text h1 {
-    font-size: 1.5em;
-  }
-
-  .hero-text p {
-    font-size: 1em;
-  }
+/* ヘッダーの中央揃え */
+.weapon-header {
+  text-align: center;
+  padding: 2rem 1rem;
 }
+
+/* 武器カードの全体中央寄せ */
+.weapon-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* ← セクション全体を中央に */
+  gap: 2rem;
+  padding: 2rem;
+}
+
+/* 各武器セクションのスタイル */
+.weapon-card {
+  background-color: #1e2a35;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* 画像の中央寄せ */
+.weapon-card img {
+  display: block;
+  margin: 0 auto 1rem;
+  max-width: 100%;
+  height: auto;
+}
+
+/* リスト整える */
+.weapon-card ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.weapon-card li {
+  margin-bottom: 0.5rem;
+}
+
