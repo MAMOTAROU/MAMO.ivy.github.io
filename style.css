@@ -9,21 +9,25 @@ body {
   background-color: #0f0f0f;
   color: white;
   font-family: 'Rajdhani', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+  /* ✂以下削除 */
+  /* display: flex;
+     justify-content: center;
+     align-items: center; */
 }
+
 
 /* === コンテナレイアウト === */
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center; /* ← カード中央寄せ */
+  align-items: center;
   gap: 20px;
   width: 100%;
-  max-width: 600px;
-  margin: 0 auto; /* ← 念のため中央揃え補強 */
+  max-width: 960px; /* 横幅を広く */
+  margin: 0 auto;
 }
+
 /* === ヒーローセクション === */
 .hero {
   position: relative;
@@ -35,7 +39,7 @@ body {
   text-align: center;
   color: #fff;
   background: linear-gradient(to bottom right, #0f0f0f, #1a1a1a),
-  url('https://i.giphy.com/i2ob9KfFb2cFWXQ241.webp');
+    url('https://i.giphy.com/i2ob9KfFb2cFWXQ241.webp');
   background-size: cover;
   background-position: center;
   box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.6);
@@ -57,10 +61,11 @@ body {
 
 .hero p {
   font-size: 1.3rem;
-  max-width: 600px;
+  max-width: 800px;
   color: #dddddd;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 }
+
 .gif-top {
   display: flex;
   justify-content: center;
@@ -70,7 +75,7 @@ body {
 }
 
 .top-gif {
-  width: min(90vw, 500px); /* 幅は最大500px、画面幅の90%以下 */
+  width: min(90vw, 700px);
   height: auto;
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
@@ -81,8 +86,9 @@ body {
   transform: scale(1.05);
 }
 
-/* === 背景GIF固定（下層） === */
-.gif-background {
+/* === 背景GIF固定 === */
+.gif-background,
+.gif-index {
   position: fixed;
   top: 0;
   left: 0;
@@ -90,29 +96,28 @@ body {
   height: 100vh;
   background-size: cover;
   background-position: center;
+
+  z-index: -10; /* ←下に引き下げ */
+  pointer-events: none; /* ←操作遮らない */
 }
 
+
 .gif-index {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100%;
+  background-image: url('kakoii.gif');
   background-size: cover;
   background-position: center;
-}
-
-.gif-index {
-  background-image: url('kakoii.gif');
-}
-
-.gif-background {
-  background-image: url('arkaine.gif');
+  z-index: -1;
 }
 
 .card {
   position: relative;
-  width: 100%;             /* ← 必要に応じて600pxとかに固定してもいい */
-  max-width: 600px;        /* ← コンテナに合わせて中央揃え */
+  width: 100%;
+  max-width: 960px; /* 広くする */
   border-radius: 15px;
   padding: 20px;
   background-size: cover;
@@ -122,25 +127,20 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
   transform: scale(1.03);
-  box-shadow: 0 0 25px rgb(250, 3, 3);
-}
-
-
-.card {
-  min-height: 300px; /* ← 元の180pxから300pxくらいに変更 */
+  box-shadow: 0 0 25px rgb(255, 255, 255);
 }
 
 .card * {
   position: relative;
   z-index: 1;
-  text-shadow: 2px 2px 6px #f7faff;
+  text-shadow: 2px 2px 1px #000000;
 }
 
 .card h2 {
@@ -166,7 +166,7 @@ body {
   margin-bottom: 6px;
 }
 
-/* === カードごとの背景画像 === */
+/* === カード背景画像 === */
 .rules {
   background-image: url('https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/28db4af74acd1d78ddba82ed127a99731261b9c8-5120x1772.png');
 }
@@ -183,7 +183,7 @@ body {
 /* === メインコンテンツ === */
 main {
   padding: 20px;
-  max-width: 800px;
+  max-width: 1000px;
   margin: auto;
   color: white;
 }
@@ -214,11 +214,11 @@ main ul li {
   margin-bottom: 10px;
 }
 
-/* === .heroに使うGIFを囲うコンテナ === */
+/* === GIFコンテナ === */
 .gif-container {
   position: relative;
-  width: 600px;
-  height: 450px;
+  width: 800px;
+  height: 500px;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -235,14 +235,14 @@ main ul li {
   border-radius: 30px;
 }
 
-/* === ヒーローテキスト中央寄せ === */
+/* === テキスト中央寄せ === */
 .hero-text {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
-  color: white;
+  color: rgb(0, 0, 0);
   text-align: center;
   text-shadow: 2px 2px 8px #000;
   pointer-events: none;
@@ -251,17 +251,6 @@ main ul li {
 .hero-text h1,
 .hero-text p {
   margin: 0;
-}
-
-/* === 特徴リスト === */
-.features ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.features li {
-  margin-bottom: 10px;
-  font-size: 1.2em;
 }
 
 /* === プレイボタン === */
@@ -280,48 +269,38 @@ main ul li {
   background-color: #d62828;
 }
 
-/* === フッター（追加する場合） === */
+/* === フッター === */
 footer {
   text-align: center;
   padding: 20px;
   font-size: 0.9em;
   color: #999;
 }
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #0f1923;
-  color: white;
-  font-family: 'Rajdhani', sans-serif;
-}
 
-/* ヘッダーの中央揃え */
+/* === 武器関連 === */
 .weapon-header {
   text-align: center;
   padding: 2rem 1rem;
 }
 
-/* 武器カードの全体中央寄せ */
 .weapon-main {
   display: flex;
   flex-direction: column;
-  align-items: center; /* ← セクション全体を中央に */
+  align-items: center;
   gap: 2rem;
   padding: 2rem;
 }
 
-/* 各武器セクションのスタイル */
 .weapon-card {
   background-color: #1e2a35;
   padding: 1.5rem;
   border-radius: 1rem;
   width: 100%;
-  max-width: 600px;
+  max-width: 960px; /* 横幅広く */
   text-align: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
-/* 画像の中央寄せ */
 .weapon-card img {
   display: block;
   margin: 0 auto 1rem;
@@ -329,7 +308,6 @@ body {
   height: auto;
 }
 
-/* リスト整える */
 .weapon-card ul {
   list-style: none;
   padding: 0;
@@ -340,3 +318,78 @@ body {
   margin-bottom: 0.5rem;
 }
 
+/* === スマホ対応 === */
+@media (max-width: 767px) {
+  body {
+    display: block;
+    padding: 10px;
+  }
+
+  .container,
+  .card,
+  .weapon-card,
+  main {
+    max-width: 100%;
+    padding: 20px 15px;
+    border-radius: 12px;
+  }
+
+  .hero {
+    padding: 60px 15px 40px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero h2 {
+    font-size: 1.6rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    max-width: 90vw;
+  }
+
+  .gif-top {
+    margin: 20px auto;
+  }
+
+  .top-gif {
+    width: 90vw;
+    max-width: none;
+  }
+
+  .card {
+    min-height: 250px;
+    padding: 15px 20px;
+  }
+
+  .card h2 {
+    font-size: 1.4em;
+  }
+
+  .card p,
+  .card ul {
+    font-size: 1em;
+  }
+
+  .play-now button {
+    font-size: 0.9em;
+    padding: 8px 16px;
+  }
+}
+
+.video-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.extra-video h3 {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 1.5em;
+  color: #fff;
+}
