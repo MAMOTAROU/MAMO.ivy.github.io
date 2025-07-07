@@ -10,7 +10,7 @@
 
 <body>
 
-  <div class="gif-index">
+  <div class="gif-index"></div>
   
   <main>
     <div class="gif-top">
@@ -37,18 +37,22 @@
         </p>
       </div>
 
-      <div class="card weapons">
-        <a href="wepons.html" class="card wepons">
-          <h2>武器紹介</h2>
-        </a>
-        <p><strong>ヴァンダルとファントムって結局どっちがいいの？</strong></p>
-        <p>あなたの悩み、ここで解決します！</p>
-        <ul>
-          <li>ヴァンダル：距離に関係なくヘッドショット一撃</li>
-          <li>ファントム：連射性・安定感・煙の中で強い</li>
-          使い分けが勝利のカギ！
-        </ul>
-      </div>
+<div class="card weapons">
+  <a href="wepons.html" class="card wepons">
+    <h2>武器紹介</h2>
+  </a>
+  <!-- ↓↓↓ このimgタグは削除！ ↓↓↓ -->
+  <!-- <img src="wepons.avif" alt="武器画像" class="weapon-img" /> -->
+
+  <p><strong>ヴァンダルとファントムって結局どっちがいいの？</strong></p>
+  <p>あなたの悩み、ここで解決します！</p>
+  <ul>
+    <li>ヴァンダル：距離に関係なくヘッドショット一撃</li>
+    <li>ファントム：連射性・安定感・煙の中で強い</li>
+    使い分けが勝利のカギ！
+  </ul>
+</div>
+
 
       <div class="card koneta">
         <a href="koneta.html" class="card koneta">
@@ -63,13 +67,25 @@
           <li>ジグルピーク</li>
         </ul>
       </div>
-
     </div>
-    <footer>
-      &copy; 2025 VALORANT Info Site. All rights reserved.
-    </footer>
-  </main>
-</div>
+
+
+<footer>
+  &copy; 2025 VALORANT Info Site. All rights reserved.
+
+  <div class="extra-video">
+    <h3>🎥 おまけプレイ動画</h3>
+    <div class="video-wrapper">
+      <iframe width="560" height="315"
+        src="https://www.youtube.com/embed/698NLCZze04"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</footer>
 
 
 </body>
